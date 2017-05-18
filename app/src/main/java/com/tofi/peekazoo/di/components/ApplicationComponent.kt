@@ -20,6 +20,7 @@ interface ApplicationComponent {
             return DaggerApplicationComponent.builder()
                     .applicationModule(ApplicationModule(application))
                     .sharedPreferencesModule(SharedPreferencesModule(application))
+                    .gsonModule(GsonModule())
                     .httpModule(HttpModule(application))
                     .networkModule(NetworkModule())
                     .apiModule(ApiModule())
