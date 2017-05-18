@@ -19,12 +19,12 @@ const val TIMEOUT_DURATION = 60L
  * Modules providing http elements for networking layer
  */
 @Module(includes = arrayOf(SharedPreferencesModule::class))
-class HttpModule(private val context : Context) {
+class HttpModule(private val context: Context) {
 
     @Provides
     @ApplicationScope
     @Named(NetworkModule.INKBUNNY)
-    fun provideOkHttpClient(builder: OkHttpClient.Builder, sharedPrefs: SharedPreferencesManager) : OkHttpClient {
+    fun provideOkHttpClient(builder: OkHttpClient.Builder, sharedPrefs: SharedPreferencesManager): OkHttpClient {
 
         builder.addInterceptor(InkbunnyNetworkInterceptor(sharedPrefs))
         return builder.build()
@@ -32,7 +32,7 @@ class HttpModule(private val context : Context) {
 
     @Provides
     @ApplicationScope
-    fun provideLoggingInterceptor() : HttpLoggingInterceptor {
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor {
 
         val interceptor = HttpLoggingInterceptor()
         val logLevel = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE

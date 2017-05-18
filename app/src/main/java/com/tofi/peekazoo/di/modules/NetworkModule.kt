@@ -31,7 +31,7 @@ class NetworkModule {
     @Provides
     @ApplicationScope
     @Named(INKBUNNY)
-    fun provideRetrofit(@Named(INKBUNNY) httpClient : OkHttpClient, gsonFactory: GsonConverterFactory) : Retrofit {
+    fun provideRetrofit(@Named(INKBUNNY) httpClient: OkHttpClient, gsonFactory: GsonConverterFactory): Retrofit {
 
         return Retrofit.Builder()
                 .client(httpClient)

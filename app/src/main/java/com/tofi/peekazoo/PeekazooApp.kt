@@ -10,7 +10,7 @@ import javax.inject.Inject
  * Created by Derek on 01/05/2017.
  * Top level application instance
  */
-class PeekazoApp : Application() {
+class PeekazooApp : Application() {
 
     @Inject
     lateinit var applicationResources : Resources

@@ -1,7 +1,8 @@
 package com.tofi.peekazoo.di.components
 
-import com.tofi.peekazoo.MainActivity
+import com.tofi.peekazoo.activities.SubmissionsActivity
 import com.tofi.peekazoo.di.ActivityScope
+import com.tofi.peekazoo.lists.viewholders.SubmissionViewHolder
 import dagger.Subcomponent
 
 /**
@@ -12,5 +13,7 @@ import dagger.Subcomponent
 @Subcomponent
 interface ActivityComponent {
 
-    fun inject(mainActivity: MainActivity)
+    fun inject(submissionsActivity: SubmissionsActivity)
+
+    fun inject(submissionViewHolder: SubmissionViewHolder)
 }
