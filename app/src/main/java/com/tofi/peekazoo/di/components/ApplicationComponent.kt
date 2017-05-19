@@ -1,6 +1,6 @@
 package com.tofi.peekazoo.di.components
 
-import com.tofi.peekazoo.PeekazoApp
+import com.tofi.peekazoo.PeekazooApp
 import com.tofi.peekazoo.di.ApplicationScope
 import com.tofi.peekazoo.di.modules.*
 import dagger.Component
@@ -11,16 +11,19 @@ import dagger.Component
  */
 @ApplicationScope
 @Component(modules = arrayOf(ApplicationModule::class, SharedPreferencesModule::class,
-        HttpModule::class, NetworkModule::class, ApiModule::class))
+        GsonModule::class, HttpModule::class, ImageModule::class, NetworkModule::class,
+        ApiModule::class))
 interface ApplicationComponent {
 
     companion object {
-        fun init(application: PeekazoApp) : ApplicationComponent {
+        fun init(application: PeekazooApp) : ApplicationComponent {
 
             return DaggerApplicationComponent.builder()
                     .applicationModule(ApplicationModule(application))
                     .sharedPreferencesModule(SharedPreferencesModule(application))
+                    .gsonModule(GsonModule())
                     .httpModule(HttpModule(application))
+                    .imageModule(ImageModule(application))
                     .networkModule(NetworkModule())
                     .apiModule(ApiModule())
                     .build()
@@ -29,5 +32,5 @@ interface ApplicationComponent {
 
     fun activityComponent() : ActivityComponent
 
-    fun inject(application : PeekazoApp)
+    fun inject(application : PeekazooApp)
 }

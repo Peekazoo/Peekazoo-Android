@@ -2,7 +2,7 @@ package com.tofi.peekazoo.di.modules
 
 import android.content.Context
 import android.content.res.Resources
-import com.tofi.peekazoo.PeekazoApp
+import com.tofi.peekazoo.PeekazooApp
 import com.tofi.peekazoo.di.ApplicationScope
 import dagger.Module
 import dagger.Provides
@@ -12,7 +12,7 @@ import dagger.Provides
  * Modules providing basic application level objects that all classes can use
  */
 @Module
-class ApplicationModule(private val application : PeekazoApp) {
+class ApplicationModule(private val application : PeekazooApp) {
 
     @Provides
     @ApplicationScope
