@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager
 import com.tofi.peekazoo.R
 import com.tofi.peekazoo.SharedPreferencesManager
 import com.tofi.peekazoo.api.InkbunnyApi
+import com.tofi.peekazoo.api.WeasylApi
 import com.tofi.peekazoo.di.components.ActivityComponent
 import com.tofi.peekazoo.lists.adapters.SubmissionResultsAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -19,6 +20,9 @@ class SubmissionsActivity : BaseActivity() {
 
     @Inject
     lateinit var inkbunnyApi: InkbunnyApi
+
+    @Inject
+    lateinit var weasylApi: WeasylApi
 
     private var adapter: SubmissionResultsAdapter? = null
 
@@ -39,6 +43,11 @@ class SubmissionsActivity : BaseActivity() {
         } else {
             startSearchRequest()
         }
+
+        weasylApi.getSubmissions(30)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({}, {})
     }
 
     override fun inject(component: ActivityComponent) {
