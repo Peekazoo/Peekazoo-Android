@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import com.tofi.peekazoo.R
 import com.tofi.peekazoo.di.components.ActivityComponent
 import com.tofi.peekazoo.lists.viewholders.SubmissionViewHolder
+import com.tofi.peekazoo.models.BaseSubmission
 import com.tofi.peekazoo.models.InkbunnySubmission
 
 /**
@@ -13,7 +14,7 @@ import com.tofi.peekazoo.models.InkbunnySubmission
  * Adapter populating a list of submission results
  */
 class SubmissionResultsAdapter(val component: ActivityComponent,
-                               val submissions: MutableList<InkbunnySubmission> = mutableListOf()):
+                               val submissions: MutableList<BaseSubmission> = mutableListOf()):
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {

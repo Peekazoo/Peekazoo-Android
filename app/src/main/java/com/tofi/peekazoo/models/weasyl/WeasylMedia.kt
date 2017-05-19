@@ -7,5 +7,5 @@ import com.google.gson.annotations.SerializedName
  * Api response for a single media unit for Weasyl
  */
 data class WeasylMedia(@SerializedName("mediaid") var id: Long = -1,
-                       var url: String = "") {
+                       var url: String? = null) {
 }

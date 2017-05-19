@@ -7,15 +7,18 @@ package com.tofi.peekazoo.models
 data class InkbunnySubmission(var submissionId: String = "",
                               var title: String = "",
                               var submissionTypeId: String = "",
-                              var thumbnail_url_medium: String? = null,
-                              var thumbnail_url_medium_noncustom: String? = null,
-                              var friends_only: String = "",
-                              var guest_block: String = "",
+                              var thumbnailUrlMedium: String? = null,
+                              var thumbnailUrlMediumNoncustom: String? = null,
+                              var friendsOnly: String = "",
+                              var guestBlock: String = "",
                               var username: String = "",
-                              var user_id: String = "") {
+                              var userId: String = ""): BaseSubmission {
 
-    fun getMediumThumbnailUrl(): String? {
+    override fun fetchTitle(): String {
+        return title
+    }
 
-        return thumbnail_url_medium?: thumbnail_url_medium_noncustom
+    override fun fetchThumbnailUrl(): String? {
+        return thumbnailUrlMedium?: thumbnailUrlMediumNoncustom
     }
 }
