@@ -7,7 +7,7 @@ import retrofit2.http.*
 
 /**
  * Created by Derek on 01/05/2017.
- * Contains Inkbunny api endpoints
+ * Defines Inkbunny api endpoints
  */
 interface InkbunnyApi {
 

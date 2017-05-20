@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.squareup.picasso.Picasso
 import com.tofi.peekazoo.di.components.ActivityComponent
-import com.tofi.peekazoo.models.InkbunnySubmission
+import com.tofi.peekazoo.models.BaseSubmission
 import kotlinx.android.synthetic.main.viewholder_submission.view.*
 import javax.inject.Inject
 
@@ -21,10 +21,10 @@ class SubmissionViewHolder(component: ActivityComponent, rootView: View): Recycl
         component.inject(this)
     }
 
-    fun bindData(submission: InkbunnySubmission) {
+    fun bindData(submission: BaseSubmission) {
 
-        picasso.load(submission.getMediumThumbnailUrl())
+        picasso.load(submission.fetchThumbnailUrl())
                 .into(itemView.image_thumbnail)
-        itemView.text_title.text = submission.title
+        itemView.text_title.text = submission.fetchTitle()
     }
 }

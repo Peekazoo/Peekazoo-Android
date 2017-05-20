@@ -11,6 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Named
 
 const val INKBUNNY_BASE_URL = "https://inkbunny.net"
+const val WEASYL_BASE_URL = "https://weasyl.com"
 
 /**
  * Created by Derek on 01/05/2017.
@@ -21,21 +22,35 @@ class NetworkModule {
 
     companion object {
 
-        @StringDef(INKBUNNY)
+        @StringDef(INKBUNNY, WEASYL)
         @Retention(AnnotationRetention.SOURCE)
         annotation class ApiType
 
         const val INKBUNNY = "Inkbunny"
+        const val WEASYL = "Weasyl"
     }
 
     @Provides
     @ApplicationScope
     @Named(INKBUNNY)
-    fun provideRetrofit(@Named(INKBUNNY) httpClient: OkHttpClient, gsonFactory: GsonConverterFactory): Retrofit {
+    fun provideInkbunnyRetrofit(@Named(INKBUNNY) httpClient: OkHttpClient, gsonFactory: GsonConverterFactory): Retrofit {
 
         return Retrofit.Builder()
                 .client(httpClient)
                 .baseUrl(INKBUNNY_BASE_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(gsonFactory)
+                .build()
+    }
+
+    @Provides
+    @ApplicationScope
+    @Named(WEASYL)
+    fun provideWeasylRetrofit(@Named(WEASYL) httpClient: OkHttpClient, gsonFactory: GsonConverterFactory): Retrofit {
+
+        return Retrofit.Builder()
+                .client(httpClient)
+                .baseUrl(WEASYL_BASE_URL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(gsonFactory)
                 .build()

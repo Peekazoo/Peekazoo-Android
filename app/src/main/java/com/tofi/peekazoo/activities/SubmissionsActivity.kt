@@ -5,6 +5,8 @@ import android.support.v7.widget.LinearLayoutManager
 import com.tofi.peekazoo.R
 import com.tofi.peekazoo.SharedPreferencesManager
 import com.tofi.peekazoo.api.InkbunnyApi
+import com.tofi.peekazoo.api.SubmissionRequestHelper
+import com.tofi.peekazoo.api.WeasylApi
 import com.tofi.peekazoo.di.components.ActivityComponent
 import com.tofi.peekazoo.lists.adapters.SubmissionResultsAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -20,11 +22,17 @@ class SubmissionsActivity : BaseActivity() {
     @Inject
     lateinit var inkbunnyApi: InkbunnyApi
 
+    @Inject
+    lateinit var weasylApi: WeasylApi
+
+    private lateinit var submissionRequestHelper: SubmissionRequestHelper
+
     private var adapter: SubmissionResultsAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_submissions)
+        submissionRequestHelper = SubmissionRequestHelper(activityComponent)
 
         val sid = sharedPreferencesManager.getStringPreference(SharedPreferencesManager.SESSION_ID, "")
 
@@ -48,15 +56,15 @@ class SubmissionsActivity : BaseActivity() {
 
     private fun startSearchRequest() {
 
-        inkbunnyApi.search(1)
+        submissionRequestHelper.fetchSubmissions()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({response ->
+                .subscribe({submissions ->
                     if (adapter == null) {
-                        adapter = SubmissionResultsAdapter(activityComponent, response.submissions)
+                        adapter = SubmissionResultsAdapter(activityComponent, submissions)
                         listSearchResults.adapter = adapter
                         listSearchResults.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
                     }
-                }, {})
+                })
     }
 }

@@ -24,9 +24,17 @@ class HttpModule(private val context: Context) {
     @Provides
     @ApplicationScope
     @Named(NetworkModule.INKBUNNY)
-    fun provideOkHttpClient(builder: OkHttpClient.Builder, sharedPrefs: SharedPreferencesManager): OkHttpClient {
+    fun provideInkbunnyOkHttpClient(builder: OkHttpClient.Builder, sharedPrefs: SharedPreferencesManager): OkHttpClient {
 
         builder.addInterceptor(InkbunnyNetworkInterceptor(sharedPrefs))
+        return builder.build()
+    }
+
+    @Provides
+    @ApplicationScope
+    @Named(NetworkModule.WEASYL)
+    fun provideWeasylOkHttpClient(builder: OkHttpClient.Builder): OkHttpClient {
+
         return builder.build()
     }
 
