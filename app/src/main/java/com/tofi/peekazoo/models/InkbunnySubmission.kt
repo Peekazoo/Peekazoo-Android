@@ -9,6 +9,10 @@ data class InkbunnySubmission(var submissionId: String = "",
                               var submissionTypeId: String = "",
                               var thumbnailUrlMedium: String? = null,
                               var thumbnailUrlMediumNoncustom: String? = null,
+                              var thumbnailUrlLarge: String? = null,
+                              var thumbnailUrlLargeNoncustom: String? = null,
+                              var thumbnailUrlHuge: String? = null,
+                              var thumbnailUrlHugeNoncustom: String? = null,
                               var friendsOnly: String = "",
                               var guestBlock: String = "",
                               var username: String = "",
@@ -19,6 +23,6 @@ data class InkbunnySubmission(var submissionId: String = "",
     }
 
     override fun fetchThumbnailUrl(): String? {
-        return thumbnailUrlMedium?: thumbnailUrlMediumNoncustom
+        return thumbnailUrlHuge?: thumbnailUrlHugeNoncustom
     }
 }

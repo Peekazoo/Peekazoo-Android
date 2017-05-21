@@ -1,5 +1,6 @@
 language: android
 jdk: oraclejdk8
+sudo: false
 
 android:
   components:
@@ -26,6 +27,10 @@ before_script:
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
+
+cache:
+  directories:
+    - $HOME/.m2
   
 notifications:
   email: false

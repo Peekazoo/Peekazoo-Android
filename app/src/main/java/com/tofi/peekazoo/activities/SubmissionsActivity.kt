@@ -1,7 +1,8 @@
 package com.tofi.peekazoo.activities
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.StaggeredGridLayoutManager
+import android.view.View
 import com.tofi.peekazoo.R
 import com.tofi.peekazoo.SharedPreferencesManager
 import com.tofi.peekazoo.api.InkbunnyApi
@@ -28,6 +29,7 @@ class SubmissionsActivity : BaseActivity() {
     private lateinit var submissionRequestHelper: SubmissionRequestHelper
 
     private var adapter: SubmissionResultsAdapter? = null
+    private var layoutManager: StaggeredGridLayoutManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,8 +64,11 @@ class SubmissionsActivity : BaseActivity() {
                 .subscribe({submissions ->
                     if (adapter == null) {
                         adapter = SubmissionResultsAdapter(activityComponent, submissions)
+                        layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
                         listSearchResults.adapter = adapter
-                        listSearchResults.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+                        listSearchResults.layoutManager = layoutManager
+
+                        loadingView.visibility = View.GONE
                     }
                 })
     }
