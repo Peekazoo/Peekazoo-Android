@@ -1,4 +1,4 @@
-package com.tofi.peekazoo.models
+package com.tofi.peekazoo.models.inkbunny
 
 /**
  * Created by Derek on 18/05/2017.

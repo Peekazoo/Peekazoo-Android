@@ -25,6 +25,6 @@ class SubmissionViewHolder(component: ActivityComponent, rootView: View): Recycl
 
         picasso.load(submission.fetchThumbnailUrl())
                 .into(itemView.image_thumbnail)
-        itemView.text_title.text = submission.fetchTitle()
+        itemView.text_title.text = submission.title
     }
 }

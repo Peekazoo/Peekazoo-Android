@@ -7,7 +7,6 @@ import com.tofi.peekazoo.R
 import com.tofi.peekazoo.di.components.ActivityComponent
 import com.tofi.peekazoo.lists.viewholders.SubmissionViewHolder
 import com.tofi.peekazoo.models.BaseSubmission
-import com.tofi.peekazoo.models.InkbunnySubmission
 
 /**
  * Created by Derek on 18/05/2017.
@@ -16,6 +15,10 @@ import com.tofi.peekazoo.models.InkbunnySubmission
 class SubmissionResultsAdapter(val component: ActivityComponent,
                                val submissions: MutableList<BaseSubmission> = mutableListOf()):
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    init {
+        submissions.sortByDescending { it.timeCreated }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
 

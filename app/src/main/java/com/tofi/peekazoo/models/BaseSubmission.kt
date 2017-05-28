@@ -6,6 +6,8 @@ package com.tofi.peekazoo.models
  */
 interface BaseSubmission {
 
-    fun fetchTitle(): String
+    var title: String
+    var timeCreated: Long
+
     fun fetchThumbnailUrl(): String?
 }

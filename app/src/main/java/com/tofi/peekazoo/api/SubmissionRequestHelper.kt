@@ -2,7 +2,7 @@ package com.tofi.peekazoo.api
 
 import com.tofi.peekazoo.di.components.ActivityComponent
 import com.tofi.peekazoo.models.BaseSubmission
-import com.tofi.peekazoo.models.InkbunnySearchResponse
+import com.tofi.peekazoo.models.inkbunny.InkbunnySearchResponse
 import com.tofi.peekazoo.models.weasyl.WeasylSubmission
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction

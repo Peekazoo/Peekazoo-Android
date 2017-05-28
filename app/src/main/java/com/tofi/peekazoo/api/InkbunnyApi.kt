@@ -1,7 +1,7 @@
 package com.tofi.peekazoo.api
 
-import com.tofi.peekazoo.models.InkbunnyLoginResponse
-import com.tofi.peekazoo.models.InkbunnySearchResponse
+import com.tofi.peekazoo.models.inkbunny.InkbunnyLoginResponse
+import com.tofi.peekazoo.models.inkbunny.InkbunnySearchResponse
 import io.reactivex.Observable
 import retrofit2.http.*
 

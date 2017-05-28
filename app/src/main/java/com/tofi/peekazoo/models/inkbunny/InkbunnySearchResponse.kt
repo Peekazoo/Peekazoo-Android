@@ -1,4 +1,6 @@
-package com.tofi.peekazoo.models
+package com.tofi.peekazoo.models.inkbunny
+
+import com.tofi.peekazoo.models.inkbunny.InkbunnySubmission
 
 /**
  * Created by Derek on 18/05/2017.
