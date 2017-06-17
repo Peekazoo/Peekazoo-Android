@@ -10,4 +10,6 @@ interface BaseSubmission {
     var timeCreated: Long
 
     fun fetchThumbnailUrl(): String?
+    fun getThumbnailSizeX(): Int
+    fun getThumbnailSizeY(): Int
 }

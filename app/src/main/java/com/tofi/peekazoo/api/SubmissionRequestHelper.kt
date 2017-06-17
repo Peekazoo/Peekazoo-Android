@@ -3,9 +3,7 @@ package com.tofi.peekazoo.api
 import com.tofi.peekazoo.di.components.ActivityComponent
 import com.tofi.peekazoo.models.BaseSubmission
 import com.tofi.peekazoo.models.inkbunny.InkbunnySearchResponse
-import com.tofi.peekazoo.models.weasyl.WeasylSubmission
 import io.reactivex.Observable
-import io.reactivex.functions.BiFunction
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
@@ -35,7 +33,12 @@ class SubmissionRequestHelper(component: ActivityComponent) {
                 .subscribeOn(Schedulers.io())
                 .onErrorReturn { InkbunnySearchResponse() }
 
-        val weasylObservable = weasylApi.getSubmissions(30)
+        return inkbunnyObservable
+                .map({ response ->
+                    response.submissions as MutableList<BaseSubmission>
+                })
+
+        /*val weasylObservable = weasylApi.getSubmissions(30)
                 .subscribeOn(Schedulers.io())
                 .onErrorReturn { mutableListOf() }
 
@@ -46,6 +49,6 @@ class SubmissionRequestHelper(component: ActivityComponent) {
                     submissions.addAll(response1.submissions)
                     submissions.addAll(response2)
                     submissions
-                })
+                })*/
     }
 }

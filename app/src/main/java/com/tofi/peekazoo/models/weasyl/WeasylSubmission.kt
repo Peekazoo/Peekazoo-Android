@@ -17,4 +17,7 @@ data class WeasylSubmission(override var title: String = "",
     override fun fetchThumbnailUrl(): String? {
         return if (media.thumbnail.isNotEmpty()) media.thumbnail[0].url else null
     }
+
+    override fun getThumbnailSizeX(): Int = 0
+    override fun getThumbnailSizeY(): Int = 0
 }
