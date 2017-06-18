@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Nav Drawer -->
+    <dimen name="nav_drawer_width">240dp</dimen>
+    <dimen name="nav_drawer_banner_height">200dp</dimen>
+    <dimen name="nav_drawer_row_height">40dp</dimen>
+
+</resources>
