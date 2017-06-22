@@ -66,9 +66,19 @@ class NavDrawerRow: LinearLayout, NavDrawerRowScreen {
 
     /**
      * Implementation from [NavDrawerRowScreen]
-     * @return Module responsible for handling the data
+     * Supply data needed to display this nav drawer row
      */
-    override fun getDataModule(): NavDrawerRowPresenter = presenter
+    override fun supplyData(@DrawerDefs.Row drawerItem: String, iconRes: Int?) {
+
+        presenter.supplyData(drawerItem, iconRes)
+    }
+
+    /**
+     * Implementation from [NavDrawerRowScreen]
+     * Get this row's drawer type
+     */
+    @DrawerDefs.Row
+    override fun getRowType(): String? = presenter.getRowText()
 
     /**
      * Implementation from [NavDrawerRowScreen]

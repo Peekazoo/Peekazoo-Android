@@ -9,11 +9,10 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
 import android.view.View
 import com.tofi.peekazoo.R
-import com.tofi.peekazoo.activities.BaseActivity
-import com.tofi.peekazoo.activities.SubmissionsActivity
 import com.tofi.peekazoo.drawer.DrawerDefs
 import com.tofi.peekazoo.drawer.NavDrawerRowScreen
 import com.tofi.peekazoo.drawer.NavDrawerScreen
+import com.tofi.peekazoo.submissions.SubmissionsActivity
 
 /**
  * Created by Derek on 18/06/2017.
@@ -96,14 +95,14 @@ abstract class BaseDrawerActivity: BaseActivity() {
             put(DrawerDefs.SUBMISSIONS, R.drawable.icon_search)
         }
 
-        drawerScreen.getDataModule().supplyData(drawerRows)
+        drawerScreen.supplyData(drawerRows)
         drawerScreen.setClickCallback(this::handleRowSelected)
     }
 
     private fun startDrawerActivity() {
 
         var intent: Intent? = null
-        @DrawerDefs.Row val drawerItem = selectedDrawerRow?.getDataModule()?.getRowText()
+        @DrawerDefs.Row val drawerItem = selectedDrawerRow?.getRowType()
 
         when (drawerItem) {
 

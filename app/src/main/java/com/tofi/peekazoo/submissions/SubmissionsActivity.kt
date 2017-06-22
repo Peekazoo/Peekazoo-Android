@@ -1,8 +1,9 @@
-package com.tofi.peekazoo.activities
+package com.tofi.peekazoo.submissions
 
 import android.os.Bundle
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.widget.StaggeredGridLayoutManager
+import android.support.v7.widget.Toolbar
 import android.view.View
 import com.tofi.peekazoo.R
 import com.tofi.peekazoo.SharedPreferencesManager
@@ -13,7 +14,6 @@ import com.tofi.peekazoo.base.BaseDrawerActivity
 import com.tofi.peekazoo.di.components.ActivityComponent
 import com.tofi.peekazoo.drawer.DrawerDefs
 import com.tofi.peekazoo.drawer.NavDrawerScreen
-import com.tofi.peekazoo.lists.adapters.SubmissionResultsAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_submissions.*
@@ -23,6 +23,7 @@ class SubmissionsActivity : BaseDrawerActivity() {
 
     override lateinit var drawerHolder: DrawerLayout
     override lateinit var drawerScreen: NavDrawerScreen
+    override lateinit var toolbar: Toolbar
 
     @Inject
     lateinit var sharedPreferencesManager: SharedPreferencesManager
@@ -41,8 +42,10 @@ class SubmissionsActivity : BaseDrawerActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_submissions)
+
         drawerHolder = navDrawerHolder
         drawerScreen = navDrawer
+        toolbar = toolbar_main
         submissionRequestHelper = SubmissionRequestHelper(activityComponent)
 
         val sid = sharedPreferencesManager.getStringPreference(SharedPreferencesManager.SESSION_ID, "")
@@ -60,10 +63,16 @@ class SubmissionsActivity : BaseDrawerActivity() {
         }
     }
 
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
+
+        toolbar.title = DrawerDefs.SUBMISSIONS
+    }
+
     override fun onResume() {
         super.onResume()
 
-        drawerScreen.getDataModule().setSelectedRow(DrawerDefs.SUBMISSIONS)
+        drawerScreen.setSelectedRow(DrawerDefs.SUBMISSIONS)
     }
 
     override fun inject(component: ActivityComponent) {

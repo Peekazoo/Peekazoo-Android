@@ -1,9 +1,9 @@
 package com.tofi.peekazoo.di.components
 
-import com.tofi.peekazoo.activities.SubmissionsActivity
+import com.tofi.peekazoo.submissions.SubmissionsActivity
 import com.tofi.peekazoo.api.SubmissionRequestHelper
 import com.tofi.peekazoo.di.ActivityScope
-import com.tofi.peekazoo.lists.viewholders.SubmissionViewHolder
+import com.tofi.peekazoo.submissions.SubmissionViewHolder
 import dagger.Subcomponent
 
 /**

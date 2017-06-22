@@ -1,11 +1,11 @@
-package com.tofi.peekazoo.lists.adapters
+package com.tofi.peekazoo.submissions
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.tofi.peekazoo.R
 import com.tofi.peekazoo.di.components.ActivityComponent
-import com.tofi.peekazoo.lists.viewholders.SubmissionViewHolder
+import com.tofi.peekazoo.submissions.SubmissionViewHolder
 import com.tofi.peekazoo.models.BaseSubmission
 
 /**

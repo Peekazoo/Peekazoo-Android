@@ -37,7 +37,7 @@ class NavDrawerPresenterImp(val screen: NavDrawerScreen,
 
         drawerRows.forEach {
 
-            if (it.getDataModule().getRowText() == drawerItem) {
+            if (it.getRowType() == drawerItem) {
 
                 handleRowSelection(it)
                 return

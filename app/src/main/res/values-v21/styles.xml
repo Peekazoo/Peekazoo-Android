@@ -1,17 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Base application theme. -->
     <style name="DrawerTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/primary_color</item>
         <item name="colorAccent">@color/primary_color</item>
         <item name="colorPrimaryDark">@android:color/black</item>
+        <item name="actionModeBackground">@null</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="drawerArrowStyle">@style/PeekazooDrawerStyle</item>
-    </style>
-
-    <style name="PeekazooDrawerStyle" parent="Widget.AppCompat.DrawerArrowToggle">
-        <item name="spinBars">true</item>
-        <item name="color">@android:color/white</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
 </resources>

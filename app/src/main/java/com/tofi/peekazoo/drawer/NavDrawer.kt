@@ -42,10 +42,19 @@ class NavDrawer: ScrollView, NavDrawerScreen {
     override fun addRow(rowText: String, icon: Int?): NavDrawerRowScreen {
 
         val row = NavDrawerRow(context)
-        row.getDataModule().supplyData(rowText, icon)
+        row.supplyData(rowText, icon)
         row.setClickCallback { clickAction!! }
         drawerHolder.addView(row.getAsView())
         return row
+    }
+
+    /**
+     * Implementation from [NavDrawerScreen]
+     * Supplies the data needed to display the nav drawer rows
+     */
+    override fun supplyData(data: Map<String, Int>) {
+
+        presenter.supplyData(data)
     }
 
     /**
@@ -59,9 +68,12 @@ class NavDrawer: ScrollView, NavDrawerScreen {
 
     /**
      * Implementation from [NavDrawerScreen]
-     * @return The module responsible for handling the data
+     * Set a drawer item as the selected row
      */
-    override fun getDataModule(): NavDrawerPresenter = presenter
+    override fun setSelectedRow(@DrawerDefs.Row drawerItem: String) {
+
+        presenter.setSelectedRow(drawerItem)
+    }
 
     private fun setUpView() {
 

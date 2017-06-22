@@ -1,4 +1,4 @@
-package com.tofi.peekazoo.lists.viewholders
+package com.tofi.peekazoo.submissions
 
 import android.support.v7.widget.RecyclerView
 import android.view.View

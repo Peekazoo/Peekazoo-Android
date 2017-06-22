@@ -12,9 +12,9 @@ interface NavDrawerRowScreen {
     fun displayRowIcon(@DrawableRes iconRes: Int)
     fun displayRowText(text: String)
 
+    fun supplyData(@DrawerDefs.Row drawerItem: String, iconRes: Int?)
     fun setAsSelectedRow(selectedRow: Boolean)
-
     fun setClickCallback(clickAction: (row: NavDrawerRow) -> Unit)
-    fun getDataModule(): NavDrawerRowPresenter
+    @DrawerDefs.Row fun getRowType(): String?
     fun getAsView(): View
 }

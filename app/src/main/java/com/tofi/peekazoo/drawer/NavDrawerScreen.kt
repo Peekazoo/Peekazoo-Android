@@ -13,6 +13,7 @@ interface NavDrawerScreen {
     fun displayBanner(@DrawableRes banner: Int)
     fun addRow(rowText: String, icon: Int?): NavDrawerRowScreen
 
+    fun supplyData(data: Map<String, Int>)
     fun setClickCallback(clickAction: (row: NavDrawerRowScreen) -> Unit)
-    fun getDataModule(): NavDrawerPresenter
+    fun setSelectedRow(@DrawerDefs.Row drawerItem: String)
 }
