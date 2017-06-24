@@ -12,4 +12,5 @@ object DrawerDefs {
     annotation class Row
 
     const val SUBMISSIONS = "Submissions"
+    const val PROFILE = "Profile"
 }

@@ -2,6 +2,8 @@ package com.tofi.peekazoo.di.modules
 
 import android.support.annotation.StringDef
 import com.tofi.peekazoo.di.ApplicationScope
+import com.tofi.peekazoo.models.inkbunny.InkbunnyErrorResponse
+import com.tofi.peekazoo.utils.InkbunnyConverter
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -41,6 +43,14 @@ class NetworkModule {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(gsonFactory)
                 .build()
+    }
+
+    @Provides
+    @ApplicationScope
+    @Named(INKBUNNY)
+    fun provideInkbunnyConverter(@Named(INKBUNNY) retrofit: Retrofit): InkbunnyConverter {
+
+        return retrofit.responseBodyConverter(InkbunnyErrorResponse::class.java, arrayOf())
     }
 
     @Provides

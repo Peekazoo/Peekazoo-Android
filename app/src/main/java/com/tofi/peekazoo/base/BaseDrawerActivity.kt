@@ -93,6 +93,7 @@ abstract class BaseDrawerActivity: BaseActivity() {
 
         drawerRows.apply {
             put(DrawerDefs.SUBMISSIONS, R.drawable.icon_search)
+            put(DrawerDefs.PROFILE, R.drawable.icon_search)
         }
 
         drawerScreen.supplyData(drawerRows)
